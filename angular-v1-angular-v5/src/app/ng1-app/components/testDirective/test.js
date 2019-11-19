@@ -9,4 +9,5 @@ export const myAppTest = angular.module('myApp.test', [
   'myApp.test.test-directive',
   'myApp.test.with-service',
   'myApp.test.with-native',
+  'myApp.test.angular-5',
 ]);
