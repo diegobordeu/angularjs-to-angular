@@ -1,3 +1,4 @@
+import { numberServiceProvider } from './services/numberService';
 import { testDirectiveComponent } from './ng1-test-directive/test-directive.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
@@ -22,7 +23,10 @@ import { myApp } from './ng1-app/app';
     BrowserModule,
     UpgradeModule
   ],
-  providers: [{provide: '$scope', useExisting: '$rootScope'}],
+  providers: [
+    {provide: '$scope', useExisting: '$rootScope'},
+    numberServiceProvider,
+  ],
 //   providers: [
 //     {
 //     provide: '$scope',
