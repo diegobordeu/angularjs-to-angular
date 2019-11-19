@@ -11,7 +11,8 @@ export const myApp = angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.version',
-  'myApp.test'
+  'myApp.test',
+  'myApp.services',
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   // $locationProvider.hashPrefix('!');
