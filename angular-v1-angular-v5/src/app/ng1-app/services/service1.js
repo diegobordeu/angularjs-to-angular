@@ -1,7 +1,7 @@
-'use strict';
+
 
 function numberService() {
-  this.toVerySmallText = function() {
+  this.toVerySmallText = (n) => {
     if(n < 1000) {
       return n.toString();
     }
@@ -13,8 +13,9 @@ function numberService() {
         return x + 'k';
     }
   }
+  return this;
 }
 
-angular.module('myApp.service.service1', [])
-.service('numberService', numberService);
+angular.module('myApp.services.service1', [])
+.factory('numberService', numberService);
 

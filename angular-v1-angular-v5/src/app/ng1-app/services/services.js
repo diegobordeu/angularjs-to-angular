@@ -1,4 +1,4 @@
-'use strict';
+
 import 'angular-route';
 import './service1';
 

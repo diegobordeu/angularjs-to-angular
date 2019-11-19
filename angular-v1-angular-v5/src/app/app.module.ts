@@ -37,7 +37,7 @@ import { myApp } from './ng1-app/app';
 export class AppModule {
   constructor(private upgrade: UpgradeModule) { 
         // bootstrap ng1 app
-    this.upgrade.bootstrap(document.body, [myApp.name], { strictDi: true });
+    this.upgrade.bootstrap(document.body, [myApp.name], { strictDi: false });
     setUpLocationSync(this.upgrade); // https://github.com/angular/angular/issues/14081
 
   }

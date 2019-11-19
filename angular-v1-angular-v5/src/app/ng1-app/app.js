@@ -4,6 +4,7 @@ import './view1/view1'
 import './view2/view2'
 import './components/version/version';
 import './components/testDirective/test';
+import './services/services'
 
 // Declare app level module which depends on views, and components
 export const myApp = angular.module('myApp', [
