@@ -1,3 +1,4 @@
+import { testDirectiveComponent } from './ng1-test-directive/test-directive.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 
@@ -6,11 +7,12 @@ import { UpgradeModule } from '@angular/upgrade/static';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { myApp } from './ng1-app/app';
+import { myApp } from './ng1-app2/app';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    testDirectiveComponent
   ],
   entryComponents: [
     AppComponent
@@ -20,19 +22,31 @@ import { myApp } from './ng1-app/app';
     BrowserModule,
     UpgradeModule
   ],
-  providers: [],
+  // providers: [{provide: '$scope', useExisting: '$rootScope'}],
+  providers: [
+    {
+    provide: '$scope',
+    useFactory: i => i.get('$rootScope'),
+    deps: ['$injector']
+}
+],
   // bootstrap: [AppComponent]
   //   remove automatic bootstrapping to allow bootstrapping ng1 app alongside ng2 app.
   //   must add `AppComponent` to `entryComponents`
 })
 export class AppModule {
-  constructor(private upgrade: UpgradeModule) { }
+  constructor(private upgrade: UpgradeModule) { 
+    this.upgrade.bootstrap(document.body, [myApp.name], { strictDi: true });
+    setUpLocationSync(this.upgrade); // https://github.com/angular/angular/issues/14081
+
+  }
 
   public ngDoBootstrap(ref: ApplicationRef) {
     ref.bootstrap(AppComponent); // manual bootstrap AppComponent
-
+    // setAngularJSGlobal(angular);
     // bootstrap ng1 app
-    this.upgrade.bootstrap(document.body, [myApp.name], { strictDi: true });
-    setUpLocationSync(this.upgrade); // https://github.com/angular/angular/issues/14081
+    console.log(myApp.name);
+    
+    
   }
 }
