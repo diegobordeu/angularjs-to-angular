@@ -1,19 +1,23 @@
+import { nativeServiceProvider } from './services/nativeService';
+import { TestDirectiveWithNativeService } from './imported/directive-with-native-service/directive-with-wative-service';
 import { numberServiceProvider } from './services/numberService';
-import { testDirectiveComponent } from './ng1-test-directive/test-directive.component';
+import { testDirectiveComponent } from './imported/ng1-test-directive/test-directive.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
-
 import { setUpLocationSync } from '@angular/router/upgrade';
 import { UpgradeModule } from '@angular/upgrade/static';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { myApp } from './ng1-app/app';
+import { nativeService } from './ng1-app/services/nativeService';
 
 @NgModule({
   declarations: [
     AppComponent,
-    testDirectiveComponent
+    testDirectiveComponent,
+    TestDirectiveWithNativeService,
   ],
   entryComponents: [
     AppComponent
@@ -26,6 +30,7 @@ import { myApp } from './ng1-app/app';
   providers: [
     {provide: '$scope', useExisting: '$rootScope'},
     numberServiceProvider,
+    nativeServiceProvider,
   ],
 //   providers: [
 //     {

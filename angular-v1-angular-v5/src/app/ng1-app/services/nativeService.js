@@ -1,15 +1,17 @@
+/* eslint-disable import/prefer-default-export */
+
 export class nativeService {
-    
-  constructor($http){
 
-  };
+  constructor($http) {
+    this.$http = $http;
+  }
 
-  tryHttp(callback, url){
-    $http.get(url)
-      .success(function(results) {
-        callback(null, results.amount, returnString);
+  tryHttp(url, callback) {
+    this.$http.get(url)
+      .success((results) => {
+        callback(null, results);
       })
-      .error(function(data) {
+      .error((data) => {
         callback(data);
       });
   }

@@ -1,7 +1,11 @@
 
 import 'angular-route';
 import './service1';
+import './native';
 
-export const myAppServices = angular.module('myApp.services', [
+const myAppServices = angular.module('myApp.services', [
   'myApp.services.service1',
+  'myApp.services.native',
 ]);
+
+export default myAppServices;

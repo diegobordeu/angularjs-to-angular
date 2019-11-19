@@ -1,10 +1,11 @@
-'use strict';
+
+
 import 'angular-route';
-import './view1/view1'
-import './view2/view2'
+import './view1/view1';
+import './view2/view2';
 import './components/version/version';
 import './components/testDirective/test';
-import './services/services'
+import './services/services';
 
 // Declare app level module which depends on views, and components
 export const myApp = angular.module('myApp', [
@@ -14,10 +15,10 @@ export const myApp = angular.module('myApp', [
   'myApp.version',
   'myApp.test',
   'myApp.services',
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+])
+.  config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   // $locationProvider.hashPrefix('!');
-  $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
   // $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+  }]);
