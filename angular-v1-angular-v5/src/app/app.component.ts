@@ -1,3 +1,4 @@
+import { AppServiceService } from './services/app-service/app-service.service';
 import { numberService } from './ng1-app/services/numberService'
 import { Component } from '@angular/core';
 import { nativeService } from './ng1-app/services/nativeService';
@@ -16,7 +17,8 @@ export class AppComponent {
   constructor(
     private numberSevice: numberService,
     private nativeService: nativeService,
-    ){
+    private appService :AppServiceService,
+    ){  
     this.serviceTest = this.numberSevice.toVerySmallText(10000000);
     nativeService.tryHttp('http://localhost:3000/api/v1/places/all/names', (err, result) => {
       if (err) {
@@ -26,5 +28,6 @@ export class AppComponent {
       }
     });
     console.log(this.numberSevice.toVerySmallText(10000000));
+    console.log(this.appService.returnSomething())
   }
 }

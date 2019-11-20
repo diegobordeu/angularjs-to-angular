@@ -1,3 +1,4 @@
+import { AppServiceService } from './services/app-service/app-service.service';
 import { nativeServiceProvider } from './services/nativeService';
 import { TestDirectiveWithNativeService } from './imported/directive-with-native-service/directive-with-wative-service';
 import { numberServiceProvider } from './services/numberService';
@@ -10,7 +11,6 @@ import { UpgradeModule } from '@angular/upgrade/static';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { myApp } from './ng1-app/app';
-import { nativeService } from './ng1-app/services/nativeService';
 import { NewComponentComponent } from './new-component/new-component.component';
 
 @NgModule({
@@ -33,6 +33,7 @@ import { NewComponentComponent } from './new-component/new-component.component';
     {provide: '$scope', useExisting: '$rootScope'},
     numberServiceProvider,
     nativeServiceProvider,
+    AppServiceService,
   ],
 //   providers: [
 //     {

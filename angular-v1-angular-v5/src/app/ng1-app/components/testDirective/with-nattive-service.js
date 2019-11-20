@@ -36,6 +36,9 @@ function directiveController(nativeService, numberService) {
         this.result = result;
       }
     });
+    this.returnSomething = () => {
+      return 'this is something';
+    };
     this.number = numberService.toVerySmallText(10000000);
   };
 }
